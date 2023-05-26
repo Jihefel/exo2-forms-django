@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <a href={% url 'add_member' %} class="link-primary">Ajouter un membre</a>
+
+    <div class="legend">
+        <span style="color:purple;">+ 24 ans</span> <span style="color:blue;">22 ou 23 ans</span>
+    </div>
+
+    <h2>Tout le monde</h2>
+   <ul>
+   {% for student in all_members %}
+       <li{% if student.age > 24 %} style="color:purple;"{% elif student.age == 23 or student.age == 22 %} style="color:blue;" {% endif %}>{{ student.name }} ({{ student.gender }}) - {{ student.email }} - {{ student.age }}</li>
+   {% endfor %}
+   </ul>
+   
+   <h2>Fille</h2>
+   <ul>
+   {% for student in female_members %}
+       <li{% if student.age > 24 %} style="color:purple;"{% elif student.age == 23 or student.age == 22 %} style="color:blue;" {% endif %}>{{ student.name }} ({{ student.gender }}) - {{ student.email }} - {{ student.age }}</li>
+   {% endfor %}
+   </ul>
+   
+   <h2>Garcon</h2>
+   <ul>
+   {% for student in male_members %}
+       <li{% if student.age > 24 %} style="color:purple;"{% elif student.age == 23 or student.age == 22 %} style="color:blue;" {% endif %}>{{ student.name }} ({{ student.gender }}) - {{ student.email }} - {{ student.age }}</li>
+   {% endfor %}
+   </ul>
+{% endblock content %} 
